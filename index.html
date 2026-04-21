@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank Battle Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tank"></i> TANK BATTLE <span class="highlight">ARENA</span></h1>
+            <p class="subtitle">Defeat enemy tanks and survive as long as possible!</p>
+        </header>
+
+        <div class="game-area">
+            <div class="stats-panel">
+                <div class="stat">
+                    <i class="fas fa-heart"></i>
+                    <span>Health: <span id="health">100</span></span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-skull-crossbones"></i>
+                    <span>Enemies: <span id="enemies">5</span></span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Score: <span id="score">0</span></span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-clock"></i>
+                    <span>Time: <span id="time">0</span>s</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Level: <span id="level">1</span></span>
+                </div>
+            </div>
+
+            <div class="game-container">
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
+                <div class="controls-info">
+                    <h3><i class="fas fa-gamepad"></i> Controls</h3>
+                    <p><i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> <i class="fas fa-arrow-left"></i> <i class="fas fa-arrow-right"></i> Move Tank</p>
+                    <p><i class="fas fa-space-shuttle"></i> Spacebar to Shoot</p>
+                    <p><i class="fas fa-redo"></i> R to Restart</p>
+                </div>
+            </div>
+
+            <div class="powerups-panel">
+                <h3><i class="fas fa-bolt"></i> Active Power-ups</h3>
+                <div id="powerups">
+                    <div class="powerup-item"><i class="fas fa-forward"></i> Speed Boost: <span id="speed-boost">0</span>s</div>
+                    <div class="powerup-item"><i class="fas fa-shield-alt"></i> Shield: <span id="shield">0</span>s</div>
+                    <div class="powerup-item"><i class="fas fa-bomb"></i> Multi-shot: <span id="multishot">0</span>s</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn btn-start"><i class="fas fa-play"></i> Start Game</button>
+            <button id="pauseBtn" class="btn btn-pause"><i class="fas fa-pause"></i> Pause</button>
+            <button id="restartBtn" class="btn btn-restart"><i class="fas fa-redo"></i> Restart</button>
+            <button id="soundBtn" class="btn btn-sound"><i class="fas fa-volume-up"></i> Sound On</button>
+            <div class="difficulty">
+                <label for="difficulty"><i class="fas fa-sliders-h"></i> Difficulty:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="insane">Insane</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h2><i class="fas fa-graduation-cap"></i> How to Play</h2>
+            <ul>
+                <li>Use arrow keys to move your tank around the battlefield</li>
+                <li>Press Spacebar to shoot bullets at enemy tanks</li>
+                <li>Avoid enemy bullets and collisions with enemy tanks</li>
+                <li>Destroy enemy tanks to earn points and advance levels</li>
+                <li>Collect power-ups that randomly appear on the battlefield</li>
+                <li>Survive as long as possible and achieve the highest score!</li>
+            </ul>
+            <p class="tip"><i class="fas fa-lightbulb"></i> Tip: Use walls for cover and try to attack enemies from behind!</p>
+        </div>
+
+        <footer>
+            <p>Tank Battle Arena &copy; 2026 | Created with <i class="fas fa-heart"></i> and JavaScript</p>
+            <p class="github-link">
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2><i class="fas fa-skull"></i> GAME OVER</h2>
+            <p>Your tank has been destroyed!</p>
+            <div class="final-stats">
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <p>Enemies Destroyed: <span id="finalEnemies">0</span></p>
+                <p>Time Survived: <span id="finalTime">0</span> seconds</p>
+                <p>Level Reached: <span id="finalLevel">1</span></p>
+            </div>
+            <button id="playAgainBtn" class="btn btn-start"><i class="fas fa-play"></i> Play Again</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
